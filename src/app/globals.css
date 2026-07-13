@@ -2,7 +2,247 @@
 @tailwind components;
 @tailwind utilities;
 
+/* M3 Baseline Dark Theme — Provence Palette */
+:root {
+  /* Primary: Warm lavender */
+  --m3-primary: #d0bcff;
+  --m3-on-primary: #381e72;
+  --m3-primary-container: #4f378b;
+  --m3-on-primary-container: #eaddff;
+
+  /* Secondary: Warm gold / amber (sunlight) */
+  --m3-secondary: #ccc2dc;
+  --m3-on-secondary: #332d41;
+  --m3-secondary-container: #4a4458;
+  --m3-on-secondary-container: #e8def8;
+
+  /* Tertiary: Olive / sage (Provence herbs) */
+  --m3-tertiary: #efb8c8;
+  --m3-on-tertiary: #492532;
+  --m3-tertiary-container: #633b48;
+  --m3-on-tertiary-container: #ffd9e2;
+
+  /* Error */
+  --m3-error: #f2b8b5;
+  --m3-on-error: #601410;
+
+  /* Surface / Background */
+  --m3-background: #1c1b1f;
+  --m3-on-background: #e6e1e5;
+  --m3-surface: #1c1b1f;
+  --m3-on-surface: #e6e1e5;
+  --m3-surface-variant: #49454f;
+  --m3-on-surface-variant: #cac4d0;
+
+  /* Outline */
+  --m3-outline: #938f99;
+  --m3-outline-variant: #49454f;
+
+  /* Surface Container hierarchy */
+  --m3-surface-container-lowest: #0f0d13;
+  --m3-surface-container-low: #211f26;
+  --m3-surface-container: #25232a;
+  --m3-surface-container-high: #302d35;
+  --m3-surface-container-highest: #3b3840;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* M3 Typography Scale */
+.m3-display-large {
+  font-size: 57px;
+  line-height: 64px;
+  letter-spacing: -0.25px;
+  font-weight: 400;
+}
+.m3-headline-large {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 400;
+}
+.m3-headline-medium {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 400;
+}
+.m3-title-large {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 400;
+}
+.m3-title-medium {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+}
+.m3-title-small {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+.m3-body-large {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+.m3-body-medium {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  font-weight: 400;
+}
+.m3-body-small {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+  font-weight: 400;
+}
+.m3-label-large {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  font-weight: 500;
+}
+.m3-label-medium {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+.m3-label-small {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* M3 Elevation */
+.m3-elevation-0 { box-shadow: none; }
+.m3-elevation-1 { box-shadow: 0 1px 3px 1px rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.3); }
+.m3-elevation-2 { box-shadow: 0 2px 6px 2px rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.3); }
+.m3-elevation-3 { box-shadow: 0 4px 8px 3px rgba(0,0,0,0.15), 0 1px 3px 0 rgba(0,0,0,0.3); }
+
+/* M3 Shape */
+.m3-shape-xs { border-radius: 4px; }
+.m3-shape-sm { border-radius: 8px; }
+.m3-shape-md { border-radius: 12px; }
+.m3-shape-lg { border-radius: 16px; }
+.m3-shape-xl { border-radius: 28px; }
+.m3-shape-full { border-radius: 9999px; }
+
+/* M3 Card */
+.m3-card {
+  background-color: var(--m3-surface-container-low);
+  border: 1px solid var(--m3-outline-variant);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* M3 Filled Button */
+.m3-button-filled {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 24px;
+  border-radius: 20px;
+  background-color: var(--m3-primary);
+  color: var(--m3-on-primary);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  line-height: 20px;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+.m3-button-filled:hover {
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,0.15);
+}
+
+/* M3 Text Button */
+.m3-button-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  background: transparent;
+  color: var(--m3-primary);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  border: none;
+  cursor: pointer;
+}
+.m3-button-text:hover {
+  background-color: rgba(208, 188, 255, 0.08);
+}
+
+/* M3 Chip */
+.m3-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background-color: var(--m3-surface-container-high);
+  border: 1px solid var(--m3-outline);
+  color: var(--m3-on-surface-variant);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* M3 Divider */
+.m3-divider {
+  border: none;
+  height: 1px;
+  background-color: var(--m3-outline-variant);
+  margin: 8px 0;
+}
+
+/* M3 Progress indicator (linear) */
+.m3-linear-progress {
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--m3-surface-container-high);
+  overflow: hidden;
+}
+.m3-linear-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background-color: var(--m3-primary);
+  transition: width 0.3s ease;
+}
+
+/* M3 Navigation Bar (bottom) */
+.m3-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 80px;
+  background-color: var(--m3-surface-container-low);
+  border-top: 1px solid var(--m3-outline-variant);
+}
+
+/* Animations */
+@keyframes m3-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.m3-fade-in {
+  animation: m3-fade-in 0.3s ease forwards;
 }
