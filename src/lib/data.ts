@@ -119,7 +119,7 @@ export const tripData: TripData = {
     { label: "海外旅行保険（Seven Corners Travel Medical Choice）", done: true },
     { label: "International SOSアプリダウンロード", done: false },
     { label: "パスポート・ビザ確認", done: false },
-    { label: "両替・キャッシュ準備", done: false },
+    { label: "両替（€100、現地ATMで引出し）", done: false },
     { label: "プリペイドSIM / 国際ローミング（Google Fi）", done: true },
     { label: "荷造り", done: false },
   ],
@@ -133,5 +133,6 @@ export const tripData: TripData = {
     "Amazon Prime Visa: 航空券支払いでtrip cancellation + 荷物補償カバー",
     "Amex Corporate Green: Baggage Insurance + Global Assist Hotline",
     "通信: Google Fi（国際ローミング対応済み）",
+    "支払い: メインはAmazon Prime Visa（Visa）。Amexは使える店で。現金€100を現地ATMで準備",
   ],
 };
