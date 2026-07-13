@@ -9,6 +9,7 @@ export interface Flight {
   aircraft: string;
   seats: string;
   cls: string;
+  layover: string;
 }
 
 export interface Hotel {

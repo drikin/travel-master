@@ -57,6 +57,13 @@ function FlightCard({ f }: { f: TripData["flights"][0] }) {
           </div>
         </div>
       </div>
+      {f.layover && (
+        <div className="mt-2 pt-2" style={{ borderTop: "1px solid var(--m3-outline-variant)" }}>
+          <span className="m3-body-small" style={{ color: "var(--m3-secondary)" }}>
+            ⏱ {f.layover}
+          </span>
+        </div>
+      )}
     </div>
   );
 }
