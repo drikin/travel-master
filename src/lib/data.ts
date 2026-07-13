@@ -143,7 +143,7 @@ export const tripData: TripData = {
     { label: "両替（€100、現地ATMで引出し）", done: false },
     { label: "プリペイドSIM / 国際ローミング（Google Fi）", done: true },
     { label: "荷造り", done: false },
-    { label: "電源タップ・変換プラグ", done: false },
+    { label: "電源タップ・変換プラグ", done: true },
   ],
 
   notes: [
