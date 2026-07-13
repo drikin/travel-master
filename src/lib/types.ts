@@ -35,6 +35,7 @@ export interface Day {
   move: string;
   content: string;
   stay: string;
+  weather: string;
 }
 
 export interface RentalCar {

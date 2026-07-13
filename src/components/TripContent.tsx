@@ -75,7 +75,10 @@ function DayCard({ d }: { d: TripData["days"][0] }) {
           </div>
           <p className="day-move">{d.move}</p>
           {d.content && <p className="day-note">{d.content}</p>}
-          <span className={`day-stay ${isEnd ? "stay-end" : ""}`}>{d.stay}</span>
+          <div className="day-bottom">
+            <span className={`day-stay ${isEnd ? "stay-end" : ""}`}>{d.stay}</span>
+            {d.weather && <span className="day-weather">{d.weather}</span>}
+          </div>
         </div>
       </div>
     </div>

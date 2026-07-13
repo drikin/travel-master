@@ -18,15 +18,15 @@ export const tripData: TripData = {
   passengers: "AOKI KOICHI / AOKI YURI",
 
   days: [
-    { day: 1, date: "7/14(火)", icon: "✈️", move: "SFO 19:30発 BA286", content: "機内泊（LHR乗継6h）", stay: "機内" },
-    { day: 2, date: "7/15(水)", icon: "✈️", move: "MRS 22:45着 BA352", content: "深夜着→タクシーでIC Marseille", stay: "IC Marseille" },
-    { day: 3, date: "7/16(木)", icon: "🚗", move: "12:00 MRS空港でレンタカー受取", content: "Luberon村巡り（Roussillon, Bonnieux, Ménerbes）", stay: "Le Mas des Herbes Blanches" },
-    { day: 4, date: "7/17(金)", icon: "🚗", move: "ラベンダー畑 / ワイナリー", content: "🍽️ 19:45 La Table des Amis ⭐⭐（Bonnieux / 予約#91545）", stay: "Le Mas des Herbes Blanches" },
-    { day: 5, date: "7/18(土)", icon: "🚄", move: "12:00 レンタカー返却 @ Avignon → TGV→Paris", content: "パリ移動", stay: "IC Paris Le Grand" },
-    { day: 6, date: "7/19(日)", icon: "🚶", move: "パリ観光", content: "", stay: "IC Paris Le Grand" },
-    { day: 7, date: "7/20(月)", icon: "🚶", move: "パリ観光・買い物", content: "", stay: "IC Paris Le Grand" },
-    { day: 8, date: "7/21(火)", icon: "🚶", move: "パリ最終日", content: "IC Paris Le Grand チェックアウト→荷物預けて観光", stay: "IC Paris Le Grand（延泊 #85041633）" },
-    { day: 9, date: "7/22(水)", icon: "✈️", move: "CDG 09:25→CPH→PHL→SFO 00:59", content: "朝早めにCDGへ移動。AF1150 09:25発", stay: "🏁" },
+    { day: 1, date: "7/14(火)", icon: "✈️", move: "SFO 19:30発 BA286", content: "機内泊（LHR乗継6h）", stay: "機内", weather: "🇺🇸 SFO 20℃" },
+    { day: 2, date: "7/15(水)", icon: "✈️", move: "MRS 22:45着 BA352", content: "深夜着→タクシーでIC Marseille", stay: "IC Marseille", weather: "☀️ 28℃ / 晴" },
+    { day: 3, date: "7/16(木)", icon: "🚗", move: "12:00 MRS空港でレンタカー受取", content: "Luberon村巡り（Roussillon, Bonnieux, Ménerbes）", stay: "Le Mas des Herbes Blanches", weather: "☀️ 32℃ / 快晴" },
+    { day: 4, date: "7/17(金)", icon: "🚗", move: "ラベンダー畑 / ワイナリー", content: "🍽️ 19:45 La Table des Amis ⭐⭐（Bonnieux / 予約#91545）", stay: "Le Mas des Herbes Blanches", weather: "☀️ 34℃ / 快晴" },
+    { day: 5, date: "7/18(土)", icon: "🚄", move: "12:00 レンタカー返却 @ Avignon → TGV→Paris", content: "パリ移動（TGV 約2h40m）", stay: "IC Paris Le Grand", weather: "☀️ 35→🌤 27℃ / 南仏→Paris" },
+    { day: 6, date: "7/19(日)", icon: "🚶", move: "パリ観光", content: "", stay: "IC Paris Le Grand", weather: "🌤 26℃ / 晴れ時々曇" },
+    { day: 7, date: "7/20(月)", icon: "🚶", move: "パリ観光・買い物", content: "", stay: "IC Paris Le Grand", weather: "🌤 27℃ / 晴" },
+    { day: 8, date: "7/21(火)", icon: "🚶", move: "パリ最終日", content: "IC Paris Le Grand チェックアウト→荷物預けて観光", stay: "IC Paris Le Grand（延泊 #85041633）", weather: "🌤 27℃ / 晴" },
+    { day: 9, date: "7/22(水)", icon: "✈️", move: "CDG 09:25→CPH→PHL→SFO 00:59", content: "朝6:30頃RER BでCDGへ。AF1150 09:25発", stay: "🏁", weather: "☀️ 25→🇺🇸 SFO 22℃" },
   ],
 
   hotels: [
@@ -157,7 +157,6 @@ export const tripData: TripData = {
     "支払い: メインはAmazon Prime Visa（Visa）。Amexは使える店で。現金€100を現地ATMで準備",
     "📎 パスポート等個人情報",
     "",
-    "🌡️ 天気: 南仏7月は35℃超、パリは25-30℃。日焼け止め・帽子・サングラス必須",
     "🔌 電源: フランスはC/E/Fタイプ（USB-C充電器で大半OK）",
     "💶 チップ: フランスはサービス料込（基本不要）。良いサービスなら€1-2置く程度",
     "",

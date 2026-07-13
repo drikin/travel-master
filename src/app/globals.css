@@ -370,12 +370,29 @@ body {
   font-weight: 500;
   background-color: var(--m3-surface-container-high);
   color: var(--m3-on-surface-variant);
-  margin-top: 8px;
 }
 .stay-end {
   background-color: var(--m3-tertiary-container);
   color: var(--m3-on-tertiary-container);
   border: 1px solid var(--m3-tertiary);
+}
+.day-bottom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.day-weather {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 8px;
+  font-size: clamp(12px, 1.4vw, 14px);
+  font-weight: 500;
+  background-color: var(--m3-surface-container-high);
+  color: var(--m3-tertiary);
 }
 
 /* ════════════════════════════════════════
