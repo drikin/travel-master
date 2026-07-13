@@ -514,12 +514,33 @@ export default function TripContent({ data }: { data: TripData }) {
           <Section title="📝 メモ">
             <div className="m3-card p-4">
               <ul className="space-y-2">
-                {data.notes.map((n, i) => (
-                  <li key={i} className="m3-body-medium flex gap-2" style={{ color: "var(--m3-on-surface-variant)" }}>
-                    <span style={{ color: "var(--m3-primary)" }}>•</span>
-                    {n}
-                  </li>
-                ))}
+                {data.notes.map((n, i) => {
+                  const isLink = n.startsWith("📎 ");
+                  const linkMatch = isLink ? n.match(/https?:\/\/[^\s]+/) : null;
+                  return (
+                    <li key={i} className="m3-body-medium flex gap-2" style={{ color: "var(--m3-on-surface-variant)" }}>
+                      {isLink && linkMatch ? (
+                        <>
+                          <span style={{ color: "var(--m3-primary)", flexShrink: 0 }}>•</span>
+                          <span>{n.replace(linkMatch[0], "")}</span>
+                          <a
+                            href={linkMatch[0]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: "var(--m3-primary)", textDecoration: "underline" }}
+                          >
+                            {linkMatch[0]}
+                          </a>
+                        </>
+                      ) : (
+                        <>
+                          <span style={{ color: "var(--m3-primary)", flexShrink: 0 }}>•</span>
+                          {n}
+                        </>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </Section>
