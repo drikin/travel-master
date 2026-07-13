@@ -64,6 +64,13 @@ function FlightCard({ f }: { f: TripData["flights"][0] }) {
           </span>
         </div>
       )}
+      {f.lounge && (
+        <div className="mt-1">
+          <span className="m3-body-small" style={{ color: "var(--m3-tertiary)" }}>
+            🛋️ {f.lounge}
+          </span>
+        </div>
+      )}
     </div>
   );
 }
@@ -227,33 +234,35 @@ export default function TripContent({ data }: { data: TripData }) {
       {/* Content */}
       <div className="px-4" style={{ maxWidth: 720, margin: "0 auto", paddingTop: 16 }}>
         <div className="space-y-5">
-          {/* 予約番号 */}
-          <div
-            className="m3-card p-4"
-            style={{
-              backgroundColor: "var(--m3-primary-container)",
-              border: "1px solid var(--m3-primary)",
-            }}
-          >
-            <div className="text-center">
-              <p className="m3-label-medium" style={{ color: "var(--m3-on-primary-container)" }}>
-                予約番号 {data.bookingRef}
-              </p>
-              <p className="m3-body-medium mt-2" style={{ color: "var(--m3-on-primary-container)" }}>
-                {data.milesCost}
-              </p>
-              <p className="m3-body-small mt-1" style={{ color: "var(--m3-on-primary-container)", opacity: 0.7 }}>
-                残 {data.remainingMiles}
-              </p>
-            </div>
-          </div>
-
           {/* フライト */}
           <Section title="✈️ フライト">
+            <div
+              className="m3-card p-4"
+              style={{
+                backgroundColor: "var(--m3-primary-container)",
+                border: "1px solid var(--m3-primary)",
+              }}
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="m3-label-medium" style={{ color: "var(--m3-on-primary-container)" }}>
+                    予約番号 {data.bookingRef}
+                  </p>
+                  <p className="m3-body-small mt-1" style={{ color: "var(--m3-on-primary-container)", opacity: 0.7 }}>
+                    {data.passengers}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="m3-body-medium" style={{ color: "var(--m3-on-primary-container)" }}>
+                    {data.milesCost}
+                  </p>
+                  <p className="m3-body-small" style={{ color: "var(--m3-on-primary-container)", opacity: 0.7 }}>
+                    残 {data.remainingMiles}
+                  </p>
+                </div>
+              </div>
+            </div>
             {data.flights.map((f, i) => <FlightCard key={i} f={f} />)}
-            <p className="m3-body-small text-center" style={{ color: "var(--m3-on-surface-variant)" }}>
-              {data.passengers}
-            </p>
           </Section>
 
           {/* 日程 */}
