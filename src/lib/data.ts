@@ -120,7 +120,7 @@ export const tripData: TripData = {
     { label: "International SOSアプリダウンロード", done: false },
     { label: "パスポート・ビザ確認", done: false },
     { label: "両替・キャッシュ準備", done: false },
-    { label: "プリペイドSIM / 国際ローミング", done: false },
+    { label: "プリペイドSIM / 国際ローミング（Google Fi）", done: true },
     { label: "荷造り", done: false },
   ],
 
@@ -132,5 +132,6 @@ export const tripData: TripData = {
     "緊急時: Seven Corners 1-800-335-0611（24時間） / International SOS +1 215 942 8226（24時間）",
     "Amazon Prime Visa: 航空券支払いでtrip cancellation + 荷物補償カバー",
     "Amex Corporate Green: Baggage Insurance + Global Assist Hotline",
+    "通信: Google Fi（国際ローミング対応済み）",
   ],
 };
