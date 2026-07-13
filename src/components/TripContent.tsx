@@ -515,25 +515,20 @@ export default function TripContent({ data }: { data: TripData }) {
             <div className="m3-card p-4">
               <ul className="space-y-2">
                 {data.notes.map((n, i) => {
-                  const linkMatch = n.match(/(https?:\/\/[^\s]+)/);
-                  const hasLink = linkMatch !== null;
-                  const beforeLink = hasLink ? n.substring(0, n.indexOf(linkMatch[0])) : n;
-                  const url = hasLink ? linkMatch[0] : "";
+                  const dropboxUrl = "https://www.dropbox.com/scl/fo/e5a0ervr6jl8qqyvz1107/AFRfKxaKIwp8vDBC93d90rk?rlkey=rcclaybjui7e1b2y88o3pni1w&dl=0";
+                  const isDropbox = n.startsWith("📎 ");
                   return (
                     <li key={i} className="m3-body-medium flex gap-2" style={{ color: "var(--m3-on-surface-variant)" }}>
                       <span style={{ color: "var(--m3-primary)", flexShrink: 0 }}>•</span>
-                      {hasLink ? (
-                        <>
-                          <span>{beforeLink}</span>
-                          <a
-                            href={url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ color: "var(--m3-primary)", textDecoration: "underline", wordBreak: "break-all" }}
-                          >
-                            {url}
-                          </a>
-                        </>
+                      {isDropbox ? (
+                        <a
+                          href={dropboxUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ color: "var(--m3-primary)", textDecoration: "underline" }}
+                        >
+                          {n}
+                        </a>
                       ) : (
                         <span>{n}</span>
                       )}
