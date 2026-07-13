@@ -6,11 +6,11 @@ export const tripData: TripData = {
   password: "driftking",
 
   flights: [
-    { leg: "行き1", flight: "BA 286", from: "SFO", to: "LHR", depart: "7/14 19:30", arrive: "7/15 13:55", aircraft: "B777W", seats: "12F / 12E", cls: "ビジネス", layover: "" },
-    { leg: "行き2", flight: "BA 352", from: "LHR", to: "MRS", depart: "7/15 19:55", arrive: "7/15 22:45", aircraft: "A320", seats: "1C / 1A", cls: "ビジネス", layover: "LHR乗継 6h（ラウンジ可）" },
-    { leg: "帰り1", flight: "AF 1150", from: "CDG", to: "CPH", depart: "7/22 09:25", arrive: "7/22 11:25", aircraft: "A220-300", seats: "20A / 20C", cls: "エコノミー", layover: "" },
-    { leg: "帰り2", flight: "AA 745", from: "CPH", to: "PHL", depart: "7/22 15:20", arrive: "7/22 17:55", aircraft: "B788", seats: "4H / 4D", cls: "ビジネス", layover: "CPH待機 3h55m" },
-    { leg: "帰り3", flight: "AA 3295", from: "PHL", to: "SFO", depart: "7/22 21:50", arrive: "7/23 00:59", aircraft: "A321neo", seats: "1C / 1A", cls: "ファースト", layover: "PHL乗継 3h55m" },
+    { leg: "行き1", flight: "BA 286", from: "SFO", to: "LHR", depart: "7/14 19:30", arrive: "7/15 13:55", aircraft: "B777W", seats: "12F / 12E", cls: "ビジネス", layover: "LHR乗継 6h（ラウンジ可）" },
+    { leg: "行き2", flight: "BA 352", from: "LHR", to: "MRS", depart: "7/15 19:55", arrive: "7/15 22:45", aircraft: "A320", seats: "1C / 1A", cls: "ビジネス", layover: "" },
+    { leg: "帰り1", flight: "AF 1150", from: "CDG", to: "CPH", depart: "7/22 09:25", arrive: "7/22 11:25", aircraft: "A220-300", seats: "20A / 20C", cls: "エコノミー", layover: "CPH待機 3h55m" },
+    { leg: "帰り2", flight: "AA 745", from: "CPH", to: "PHL", depart: "7/22 15:20", arrive: "7/22 17:55", aircraft: "B788", seats: "4H / 4D", cls: "ビジネス", layover: "PHL乗継 3h55m" },
+    { leg: "帰り3", flight: "AA 3295", from: "PHL", to: "SFO", depart: "7/22 21:50", arrive: "7/23 00:59", aircraft: "A321neo", seats: "1C / 1A", cls: "ファースト", layover: "" },
   ],
   bookingRef: "FA4WQJ",
   milesCost: "230,000マイル + ¥186,020（2人分）",
