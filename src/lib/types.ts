@@ -60,6 +60,8 @@ export interface Dinner {
   venue: string;
   time: string;
   notes: string;
+  address: string;
+  mapLink: string;
 }
 
 export interface Insurance {

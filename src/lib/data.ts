@@ -107,7 +107,7 @@ export const tripData: TripData = {
   },
 
   dinners: [
-    { date: "7/17(金)", venue: "La Table des Amis（Bonnieux / ⭐⭐）", time: "19:45", notes: "予約#91545 / €260×2人" },
+    { date: "7/17(金)", venue: "La Table des Amis（Bonnieux / ⭐⭐）", time: "19:45", notes: "予約#91545 / €260×2人", address: "Place de la Liberté, 84480 Bonnieux, France", mapLink: "https://maps.google.com/?q=La+Table+des+Amis+Bonnieux+84480" },
   ],
 
   insurance: {

@@ -398,13 +398,25 @@ export default function TripContent({ data }: { data: TripData }) {
                     <span className="m3-title-small" style={{ color: "var(--m3-on-surface)" }}>
                       {d.venue}
                     </span>
-                    <span className="m3-label-medium" style={{ color: "var(--m3-secondary)" }}>
+                    <span className="m3-label-large" style={{ color: "var(--m3-secondary)" }}>
                       {d.time}
                     </span>
                   </div>
-                  <p className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
+                  <p className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
                     {d.date} {d.notes}
                   </p>
+                  <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface)" }}>
+                    📍 {d.address}
+                  </p>
+                  <a
+                    href={d.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="m3-body-medium mt-1"
+                    style={{ color: "var(--m3-primary)", display: "inline-flex", alignItems: "center", gap: 4, textDecoration: "underline" }}
+                  >
+                    🗺️ Google Mapsで見る
+                  </a>
                 </div>
               ))}
             </Section>
