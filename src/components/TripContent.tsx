@@ -515,28 +515,27 @@ export default function TripContent({ data }: { data: TripData }) {
             <div className="m3-card p-4">
               <ul className="space-y-2">
                 {data.notes.map((n, i) => {
-                  const isLink = n.startsWith("📎 ");
-                  const linkMatch = isLink ? n.match(/https?:\/\/[^\s]+/) : null;
+                  const linkMatch = n.match(/(https?:\/\/[^\s]+)/);
+                  const hasLink = linkMatch !== null;
+                  const beforeLink = hasLink ? n.substring(0, n.indexOf(linkMatch[0])) : n;
+                  const url = hasLink ? linkMatch[0] : "";
                   return (
                     <li key={i} className="m3-body-medium flex gap-2" style={{ color: "var(--m3-on-surface-variant)" }}>
-                      {isLink && linkMatch ? (
+                      <span style={{ color: "var(--m3-primary)", flexShrink: 0 }}>•</span>
+                      {hasLink ? (
                         <>
-                          <span style={{ color: "var(--m3-primary)", flexShrink: 0 }}>•</span>
-                          <span>{n.replace(linkMatch[0], "")}</span>
+                          <span>{beforeLink}</span>
                           <a
-                            href={linkMatch[0]}
+                            href={url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ color: "var(--m3-primary)", textDecoration: "underline" }}
+                            style={{ color: "var(--m3-primary)", textDecoration: "underline", wordBreak: "break-all" }}
                           >
-                            {linkMatch[0]}
+                            {url}
                           </a>
                         </>
                       ) : (
-                        <>
-                          <span style={{ color: "var(--m3-primary)", flexShrink: 0 }}>•</span>
-                          {n}
-                        </>
+                        <span>{n}</span>
                       )}
                     </li>
                   );

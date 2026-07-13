@@ -155,6 +155,6 @@ export const tripData: TripData = {
     "Amex Corporate Green: Baggage Insurance + Global Assist Hotline",
     "通信: Google Fi（国際ローミング対応済み）",
     "支払い: メインはAmazon Prime Visa（Visa）。Amexは使える店で。現金€100を現地ATMで準備",
-    "📎 パスポート等個人情報: https://www.dropbox.com/scl/fo/e5a0ervr6jl8qqyvz1107/AFRfKxaKIwp8vDBC93d90rk?rlkey=rcclaybjui7e1b2y88o3pni1w&dl=0",
+    "📎 パスポート等個人情報 → https://www.dropbox.com/scl/fo/e5a0ervr6jl8qqyvz1107/AFRfKxaKIwp8vDBC93d90rk?rlkey=rcclaybjui7e1b2y88o3pni1w&dl=0",
   ],
 };
