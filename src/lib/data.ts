@@ -1,0 +1,118 @@
+import { TripData } from "./types";
+
+export const tripData: TripData = {
+  title: "プロヴァンス＆パリ旅行",
+  subtitle: "2026年7月14日(火) → 7月23日(木)",
+  password: "driftking",
+
+  flights: [
+    { leg: "行き1", flight: "BA 286", from: "SFO", to: "LHR", depart: "7/14 19:30", arrive: "7/15 13:55", aircraft: "B777W", seats: "12F / 12E", cls: "ビジネス" },
+    { leg: "行き2", flight: "BA 352", from: "LHR", to: "MRS", depart: "7/15 19:55", arrive: "7/15 22:45", aircraft: "A320", seats: "1C / 1A", cls: "ビジネス" },
+    { leg: "帰り1", flight: "AF 1150", from: "CDG", to: "CPH", depart: "7/22 09:25", arrive: "7/22 11:25", aircraft: "A220-300", seats: "20A / 20C", cls: "エコノミー" },
+    { leg: "帰り2", flight: "AA 745", from: "CPH", to: "PHL", depart: "7/22 15:20", arrive: "7/22 17:55", aircraft: "B788", seats: "4H / 4D", cls: "ビジネス" },
+    { leg: "帰り3", flight: "AA 3295", from: "PHL", to: "SFO", depart: "7/22 21:50", arrive: "7/23 00:59", aircraft: "A321neo", seats: "1C / 1A", cls: "ファースト" },
+  ],
+  bookingRef: "FA4WQJ",
+  milesCost: "230,000マイル + ¥186,020（2人分）",
+  remainingMiles: "224,012マイル",
+  passengers: "AOKI KOICHI / AOKI YURI",
+
+  days: [
+    { day: 1, date: "7/14(火)", icon: "✈️", move: "SFO 19:30発 BA286", content: "機内泊（LHR乗継6h）", stay: "機内" },
+    { day: 2, date: "7/15(水)", icon: "✈️", move: "MRS 22:45着 BA352", content: "深夜着→タクシーでIC Marseille", stay: "IC Marseille" },
+    { day: 3, date: "7/16(木)", icon: "🚗", move: "12:00 MRS空港でレンタカー受取", content: "Luberon村巡り（Roussillon, Bonnieux, Ménerbes）", stay: "Le Mas des Herbes Blanches" },
+    { day: 4, date: "7/17(金)", icon: "🚗", move: "ラベンダー畑 / ワイナリー", content: "🍽️ 19:45 La Table des Amis ⭐⭐（Bonnieux / 予約#91545）", stay: "Le Mas des Herbes Blanches" },
+    { day: 5, date: "7/18(土)", icon: "🚄", move: "12:00 レンタカー返却 @ Avignon → TGV→Paris", content: "パリ移動", stay: "IC Paris Le Grand" },
+    { day: 6, date: "7/19(日)", icon: "🚶", move: "パリ観光", content: "", stay: "IC Paris Le Grand" },
+    { day: 7, date: "7/20(月)", icon: "🚶", move: "パリ観光・買い物", content: "", stay: "IC Paris Le Grand" },
+    { day: 8, date: "7/21(火)", icon: "🚶", move: "パリ最終日", content: "", stay: "—" },
+    { day: 9, date: "7/22(水)", icon: "✈️", move: "CDG 09:25→CPH→PHL→SFO 00:59", content: "帰路（AF1150→AA745→AA3295）", stay: "🏁" },
+  ],
+
+  hotels: [
+    {
+      name: "InterContinental Marseille - Hotel Dieu",
+      nights: "1泊（7/15→7/16）",
+      dates: "7/15(水)〜7/16(木)",
+      address: "1 Place Daviel, 13002 Marseille",
+      phone: "+33 4 13 42 42 42",
+      room: "1 King Classic",
+      checkin: "7/15 16:00",
+      checkout: "7/16 12:00",
+      payment: "63,000 IHG pt（Reward Nights）",
+      notes: "TVA 10% + Taxe de séjour €4.32/人/泊（現地払）",
+      bookingRef: "#65596604",
+    },
+    {
+      name: "Le Mas des Herbes Blanches Hôtel & Spa",
+      nights: "2泊（7/16→7/18）",
+      dates: "7/16(木)〜7/18(土)",
+      address: "Lieu dit Toron, 84220 Joucas",
+      phone: "+33 4 90 05 79 79",
+      room: "Superior Room（30m² / テラス）",
+      checkin: "7/16 16:00",
+      checkout: "7/18 12:00",
+      payment: "€1,424（税別）+ €15.84現地払 / 残€996.80支払済",
+      notes: "Romance \"Flower of Sky\"（朝食込） / PIN: 47474",
+      bookingRef: "#KBQKN4",
+    },
+    {
+      name: "InterContinental Paris - Le Grand",
+      nights: "3泊（7/18→7/21）",
+      dates: "7/18(土)〜7/21(火)",
+      address: "2 Rue Scribe, 75009 Paris",
+      phone: "+33 1 40 07 32 32",
+      room: "Cosy Room",
+      checkin: "7/18 15:00",
+      checkout: "7/21 12:00",
+      payment: "399,000 IHG pt（Reward Nights × 3泊）",
+      notes: "TVA 10% + City Tax €11.70/人/泊（現地払）",
+      bookingRef: "#87873070",
+    },
+  ],
+
+  rentalCar: {
+    company: "National Car Rental",
+    ref: "#2122638749",
+    car: "Compact SUV Auto（Renault Captur or similar）AT",
+    pickup: "7/16(木) 12:00 @ MRS空港",
+    returnLoc: "7/18(土) 12:00 @ Avignon TGV駅",
+    extraDriver: "YURIE AOKI（無料）",
+    dw: "Damage Waiver Included",
+    mileage: "500km込（超過€0.34/km）",
+    total: "€194.04（約$221.52）",
+    phone: "+33 4 42 06 06 46",
+    hours: "7:30-23:00 毎日",
+  },
+
+  dinners: [
+    { date: "7/17(金)", venue: "La Table des Amis（Bonnieux / ⭐⭐）", time: "19:45", notes: "予約#91545 / €260×2人" },
+  ],
+
+  ihgTotal: "462,000 pt",
+  ihgRemaining: "約981,000 pt",
+
+  todo: [
+    { label: "フライト予約（JALマイル特典 FA4WQJ）", done: true },
+    { label: "Gordes宿（Le Mas des Herbes Blanches #KBQKN4）", done: true },
+    { label: "IC Marseille（#65596604 / 63K pt）", done: true },
+    { label: "IC Paris Le Grand（#87873070 / 399K pt）", done: true },
+    { label: "AF1150 CDG→CPH（YT5XVC / €497.60）", done: true },
+    { label: "La Table des Amis ディナー予約（#91545）", done: true },
+    { label: "IDP取得（AAA）", done: true },
+    { label: "残額€996.80支払い", done: true },
+    { label: "レンタカー予約（National #2122638749 / €194.04）", done: true },
+    { label: "TGV Avignon→Paris 7/18（現場購入）", done: false },
+    { label: "海外旅行保険確認", done: false },
+    { label: "パスポート・ビザ確認", done: false },
+    { label: "両替・キャッシュ準備", done: false },
+    { label: "プリペイドSIM / 国際ローミング", done: false },
+    { label: "荷造り", done: false },
+  ],
+
+  notes: [
+    "自宅: CA Santa Clara（出張で日本一時帰国中→SFO発）",
+    "レンタカー: National Emerald Club #824042881 / SONY契約。Grace Period 29分",
+    "南仏7月は35℃超、パリは25-30℃。日焼け止め・帽子必須",
+  ],
+};
