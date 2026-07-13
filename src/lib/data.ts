@@ -139,7 +139,7 @@ export const tripData: TripData = {
     { label: "TGV Avignon→Paris 7/18（現場購入）", done: false },
     { label: "海外旅行保険（Seven Corners Travel Medical Choice）", done: true },
     { label: "International SOSアプリダウンロード", done: true },
-    { label: "パスポート・ビザ確認", done: false },
+    { label: "パスポート・ビザ確認（Dropbox保管）", done: true },
     { label: "両替（€100、現地ATMで引出し）", done: false },
     { label: "プリペイドSIM / 国際ローミング（Google Fi）", done: true },
     { label: "荷造り", done: false },
@@ -155,5 +155,6 @@ export const tripData: TripData = {
     "Amex Corporate Green: Baggage Insurance + Global Assist Hotline",
     "通信: Google Fi（国際ローミング対応済み）",
     "支払い: メインはAmazon Prime Visa（Visa）。Amexは使える店で。現金€100を現地ATMで準備",
+    "📎 パスポート等個人情報: https://www.dropbox.com/scl/fo/e5a0ervr6jl8qqyvz1107/AFRfKxaKIwp8vDBC93d90rk?rlkey=rcclaybjui7e1b2y88o3pni1w&dl=0",
   ],
 };
