@@ -136,7 +136,7 @@ function HotelCard({ h }: { h: TripData["hotels"][0] }) {
           <h3 className="m3-title-small" style={{ color: "var(--m3-on-surface)" }}>
             {h.name}
           </h3>
-          <p className="m3-body-small mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
+          <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
             {h.nights}
           </p>
         </div>
@@ -151,17 +151,26 @@ function HotelCard({ h }: { h: TripData["hotels"][0] }) {
           ["支払", h.payment],
         ].map(([label, value], i) => (
           <div key={i} className="contents">
-            <span className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
+            <span className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
               {label}
             </span>
-            <span className="m3-body-small" style={{ color: "var(--m3-on-surface)" }}>
+            <span className="m3-body-medium" style={{ color: "var(--m3-on-surface)" }}>
               {value}
             </span>
           </div>
         ))}
       </div>
+      <a
+        href={h.mapLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="m3-body-medium mt-2"
+        style={{ color: "var(--m3-primary)", display: "inline-flex", alignItems: "center", gap: 4, textDecoration: "underline" }}
+      >
+        🗺️ Google Mapsで見る
+      </a>
       {h.notes && (
-        <p className="m3-body-small mt-3" style={{ color: "var(--m3-on-surface-variant)" }}>
+        <p className="m3-body-medium mt-3" style={{ color: "var(--m3-on-surface-variant)" }}>
           {h.notes}
         </p>
       )}

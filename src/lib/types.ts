@@ -18,6 +18,7 @@ export interface Hotel {
   nights: string;
   dates: string;
   address: string;
+  mapLink: string;
   phone: string;
   room: string;
   checkin: string;
