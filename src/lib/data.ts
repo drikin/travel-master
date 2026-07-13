@@ -138,7 +138,7 @@ export const tripData: TripData = {
     { label: "レンタカー予約（National #2122638749 / €194.04）", done: true },
     { label: "TGV Avignon→Paris 7/18（現場購入）", done: false },
     { label: "海外旅行保険（Seven Corners Travel Medical Choice）", done: true },
-    { label: "International SOSアプリダウンロード", done: false },
+    { label: "International SOSアプリダウンロード", done: true },
     { label: "パスポート・ビザ確認", done: false },
     { label: "両替（€100、現地ATMで引出し）", done: false },
     { label: "プリペイドSIM / 国際ローミング（Google Fi）", done: true },
