@@ -327,6 +327,48 @@ export default function TripContent({ data }: { data: TripData }) {
             </Section>
           )}
 
+          {/* 旅行保険 */}
+          <Section title="🛡️ 旅行保険">
+            <div className="m3-card p-4 m3-fade-in">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                {[
+                  ["会社", data.insurance.provider],
+                  ["プラン", data.insurance.plan],
+                  ["証明書", data.insurance.certNumber],
+                  ["期間", data.insurance.period],
+                  ["加入者", data.insurance.travelers],
+                  ["医療限度額", data.insurance.medicalMax],
+                  ["免責", data.insurance.deductible],
+                  ["緊急搬送", data.insurance.evacuation],
+                  ["緊急連絡", data.insurance.emergencyPhone],
+                ].map(([label, value], i) => (
+                  <div key={i} className="contents">
+                    <span className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
+                      {label}
+                    </span>
+                    <span
+                      className="m3-body-small"
+                      style={{
+                        color: label === "緊急連絡" ? "var(--m3-primary)" : "var(--m3-on-surface)",
+                        fontWeight: label === "医療限度額" || label === "緊急搬送" ? 600 : 400,
+                      }}
+                    >
+                      {value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              {data.insurance.notes && (
+                <hr className="m3-divider" />
+              )}
+              {data.insurance.notes && (
+                <p className="m3-body-small mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
+                  {data.insurance.notes}
+                </p>
+              )}
+            </div>
+          </Section>
+
           {/* TODO */}
           <Section title="✅ 準備リスト">
             <div className="m3-card p-4">

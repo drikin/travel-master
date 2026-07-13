@@ -55,6 +55,19 @@ export interface Dinner {
   notes: string;
 }
 
+export interface Insurance {
+  provider: string;
+  plan: string;
+  certNumber: string;
+  period: string;
+  travelers: string;
+  medicalMax: string;
+  deductible: string;
+  evacuation: string;
+  emergencyPhone: string;
+  notes: string;
+}
+
 export interface TripData {
   title: string;
   subtitle: string;
@@ -68,6 +81,7 @@ export interface TripData {
   hotels: Hotel[];
   rentalCar: RentalCar;
   dinners: Dinner[];
+  insurance: Insurance;
   ihgTotal: string;
   ihgRemaining: string;
   todo: { label: string; done: boolean }[];

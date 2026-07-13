@@ -89,6 +89,19 @@ export const tripData: TripData = {
     { date: "7/17(金)", venue: "La Table des Amis（Bonnieux / ⭐⭐）", time: "19:45", notes: "予約#91545 / €260×2人" },
   ],
 
+  insurance: {
+    provider: "Seven Corners",
+    plan: "Travel Medical Choice",
+    certNumber: "2TMCH26-104114",
+    period: "7/14〜7/23（9日間）",
+    travelers: "Koichi Aoki / Yurie Aoki",
+    medicalMax: "$100,000",
+    deductible: "$0",
+    evacuation: "$500,000（緊急医療搬送）",
+    emergencyPhone: "1-800-335-0611（24時間）",
+    notes: "International SOS（SIE福利厚生）と併用推奨。アプリダウンロード推奨。",
+  },
+
   ihgTotal: "462,000 pt",
   ihgRemaining: "約981,000 pt",
 
@@ -103,7 +116,8 @@ export const tripData: TripData = {
     { label: "残額€996.80支払い", done: true },
     { label: "レンタカー予約（National #2122638749 / €194.04）", done: true },
     { label: "TGV Avignon→Paris 7/18（現場購入）", done: false },
-    { label: "海外旅行保険確認", done: false },
+    { label: "海外旅行保険（Seven Corners Travel Medical Choice）", done: true },
+    { label: "International SOSアプリダウンロード", done: false },
     { label: "パスポート・ビザ確認", done: false },
     { label: "両替・キャッシュ準備", done: false },
     { label: "プリペイドSIM / 国際ローミング", done: false },
@@ -114,5 +128,9 @@ export const tripData: TripData = {
     "自宅: CA Santa Clara（出張で日本一時帰国中→SFO発）",
     "レンタカー: National Emerald Club #824042881 / SONY契約。Grace Period 29分",
     "南仏7月は35℃超、パリは25-30℃。日焼け止め・帽子必須",
+    "旅行保険: Seven Corners Travel Medical Choice（$144.76/2人、Certificate #2TMCH26-104114）",
+    "緊急時: Seven Corners 1-800-335-0611（24時間） / International SOS +1 215 942 8226（24時間）",
+    "Amazon Prime Visa: 航空券支払いでtrip cancellation + 荷物補償カバー",
+    "Amex Corporate Green: Baggage Insurance + Global Assist Hotline",
   ],
 };
