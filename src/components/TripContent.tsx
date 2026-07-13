@@ -12,7 +12,7 @@ function FlightCard({ f }: { f: TripData["flights"][0] }) {
   return (
     <div className="m3-card p-4 m3-fade-in">
       <div className="flex items-center justify-between mb-3">
-        <span className="m3-label-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
+        <span className="m3-label-large" style={{ color: "var(--m3-on-surface-variant)" }}>
           {f.leg}
         </span>
         <span
@@ -21,52 +21,53 @@ function FlightCard({ f }: { f: TripData["flights"][0] }) {
             backgroundColor: "var(--m3-secondary-container)",
             color: "var(--m3-on-secondary-container)",
             border: "none",
-            height: 26,
-            padding: "0 12px",
+            height: 28,
+            padding: "0 14px",
+            fontSize: 14,
           }}
         >
           {f.cls}
         </span>
       </div>
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between gap-4">
         <div className="text-left">
-          <div className="m3-title-medium" style={{ color: "var(--m3-on-surface)" }}>
+          <div className="m3-title-large" style={{ color: "var(--m3-on-surface)" }}>
             {f.from}
           </div>
-          <div className="m3-body-small mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
+          <div className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
             {f.depart}
           </div>
         </div>
-        <div className="text-center flex-shrink-0" style={{ minWidth: 80 }}>
-          <div className="m3-label-medium" style={{ color: "var(--m3-primary)" }}>
+        <div className="text-center flex-shrink-0" style={{ minWidth: 90 }}>
+          <div className="m3-label-large" style={{ color: "var(--m3-primary)" }}>
             {f.flight}
           </div>
-          <div className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
+          <div className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
             {f.aircraft}
           </div>
-          <div className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
+          <div className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
             {f.seats}
           </div>
         </div>
         <div className="text-right">
-          <div className="m3-title-medium" style={{ color: "var(--m3-on-surface)" }}>
+          <div className="m3-title-large" style={{ color: "var(--m3-on-surface)" }}>
             {f.to}
           </div>
-          <div className="m3-body-small mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
+          <div className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
             {f.arrive}
           </div>
         </div>
       </div>
       {f.layover && (
-        <div className="mt-2 pt-2" style={{ borderTop: "1px solid var(--m3-outline-variant)" }}>
-          <span className="m3-body-small" style={{ color: "var(--m3-secondary)" }}>
+        <div className="mt-3 pt-3" style={{ borderTop: "1px solid var(--m3-outline-variant)" }}>
+          <span className="m3-body-medium" style={{ color: "var(--m3-secondary)" }}>
             ⏱ {f.layover}
           </span>
         </div>
       )}
       {f.lounge && (
         <div className="mt-1">
-          <span className="m3-body-small" style={{ color: "var(--m3-tertiary)" }}>
+          <span className="m3-body-medium" style={{ color: "var(--m3-tertiary)" }}>
             🛋️ {f.lounge}
           </span>
         </div>
@@ -245,24 +246,41 @@ export default function TripContent({ data }: { data: TripData }) {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="m3-label-medium" style={{ color: "var(--m3-on-primary-container)" }}>
+                  <p className="m3-label-large" style={{ color: "var(--m3-on-primary-container)" }}>
                     予約番号 {data.bookingRef}
                   </p>
-                  <p className="m3-body-small mt-1" style={{ color: "var(--m3-on-primary-container)", opacity: 0.7 }}>
+                  <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-primary-container)", opacity: 0.7 }}>
                     {data.passengers}
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="m3-body-medium" style={{ color: "var(--m3-on-primary-container)" }}>
+                  <p className="m3-body-large" style={{ color: "var(--m3-on-primary-container)" }}>
                     {data.milesCost}
                   </p>
-                  <p className="m3-body-small" style={{ color: "var(--m3-on-primary-container)", opacity: 0.7 }}>
+                  <p className="m3-body-medium" style={{ color: "var(--m3-on-primary-container)", opacity: 0.7 }}>
                     残 {data.remainingMiles}
                   </p>
                 </div>
               </div>
             </div>
-            {data.flights.map((f, i) => <FlightCard key={i} f={f} />)}
+
+            {/* 行き */}
+            <div className="flex items-center gap-2 ml-1">
+              <span style={{ fontSize: 18 }}>⬆️</span>
+              <h3 className="m3-title-small" style={{ color: "var(--m3-on-surface-variant)" }}>行き</h3>
+            </div>
+            <div className="space-y-3">
+              {data.flights.filter(f => f.leg.startsWith("行き")).map((f, i) => <FlightCard key={i} f={f} />)}
+            </div>
+
+            {/* 帰り */}
+            <div className="flex items-center gap-2 ml-1 mt-4">
+              <span style={{ fontSize: 18 }}>⬇️</span>
+              <h3 className="m3-title-small" style={{ color: "var(--m3-on-surface-variant)" }}>帰り</h3>
+            </div>
+            <div className="space-y-3">
+              {data.flights.filter(f => f.leg.startsWith("帰り")).map((f, i) => <FlightCard key={i} f={f} />)}
+            </div>
           </Section>
 
           {/* 日程 */}
