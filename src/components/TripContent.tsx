@@ -2,74 +2,57 @@
 
 import { TripData } from "@/lib/types";
 
+/* ─── Shared link component ─── */
+function MapLink({ href }: { href: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="m3-map-link"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="10" r="3"/>
+        <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/>
+      </svg>
+      マップで見る
+    </a>
+  );
+}
+
 /* ─── Flight Card ─── */
 function FlightCard({ f }: { f: TripData["flights"][0] }) {
-  const clsColor =
-    f.cls.includes("ビジネス") ? "var(--m3-tertiary)" :
-    f.cls.includes("ファースト") ? "var(--m3-secondary)" :
-    "var(--m3-on-surface-variant)";
-
   return (
-    <div className="m3-card p-4 m3-fade-in">
-      <div className="flex items-center justify-between mb-3">
-        <span className="m3-label-large" style={{ color: "var(--m3-on-surface-variant)" }}>
-          {f.leg}
-        </span>
-        <span
-          className="m3-chip"
-          style={{
-            backgroundColor: "var(--m3-secondary-container)",
-            color: "var(--m3-on-secondary-container)",
-            border: "none",
-            height: 28,
-            padding: "0 14px",
-            fontSize: 14,
-          }}
-        >
+    <div className="m3-card p-4">
+      <div className="flight-header">
+        <span className="flight-leg">{f.leg}</span>
+        <span className={`flight-cls ${f.cls.includes("ファースト") ? "cls-first" : f.cls.includes("ビジネス") ? "cls-business" : "cls-economy"}`}>
           {f.cls}
         </span>
       </div>
-      <div className="flex items-center justify-between gap-4">
-        <div className="text-left">
-          <div className="m3-title-large" style={{ color: "var(--m3-on-surface)" }}>
-            {f.from}
-          </div>
-          <div className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
-            {f.depart}
-          </div>
+      <div className="flight-route">
+        <div className="flight-point">
+          <div className="flight-city">{f.from}</div>
+          <div className="flight-time">{f.depart}</div>
         </div>
-        <div className="text-center flex-shrink-0" style={{ minWidth: 90 }}>
-          <div className="m3-label-large" style={{ color: "var(--m3-primary)" }}>
-            {f.flight}
-          </div>
-          <div className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
-            {f.aircraft}
-          </div>
-          <div className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
-            {f.seats}
-          </div>
+        <div className="flight-middle">
+          <div className="flight-num">{f.flight}</div>
+          <div className="flight-sub">{f.aircraft}</div>
+          <div className="flight-sub">{f.seats}</div>
         </div>
-        <div className="text-right">
-          <div className="m3-title-large" style={{ color: "var(--m3-on-surface)" }}>
-            {f.to}
-          </div>
-          <div className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
-            {f.arrive}
-          </div>
+        <div className="flight-point flight-point-right">
+          <div className="flight-city">{f.to}</div>
+          <div className="flight-time">{f.arrive}</div>
         </div>
       </div>
       {f.layover && (
-        <div className="mt-3 pt-3" style={{ borderTop: "1px solid var(--m3-outline-variant)" }}>
-          <span className="m3-body-medium" style={{ color: "var(--m3-secondary)" }}>
-            ⏱ {f.layover}
-          </span>
+        <div className="flight-info">
+          <span className="info-icon">⏱</span> {f.layover}
         </div>
       )}
       {f.lounge && (
-        <div className="mt-1">
-          <span className="m3-body-medium" style={{ color: "var(--m3-tertiary)" }}>
-            🛋️ {f.lounge}
-          </span>
+        <div className="flight-info flight-lounge">
+          <span className="info-icon">🛋️</span> {f.lounge}
         </div>
       )}
     </div>
@@ -80,46 +63,19 @@ function FlightCard({ f }: { f: TripData["flights"][0] }) {
 function DayCard({ d }: { d: TripData["days"][0] }) {
   const isEnd = d.stay === "🏁";
   return (
-    <div className="m3-card p-4 m3-fade-in">
-      <div className="flex items-start gap-3">
-        <div
-          className="flex items-center justify-center flex-shrink-0"
-          style={{
-            width: 48,
-            height: 48,
-            borderRadius: 14,
-            backgroundColor: "var(--m3-primary-container)",
-          }}
-        >
-          <span style={{ fontSize: 22 }}>{d.icon}</span>
+    <div className="m3-card p-4">
+      <div className="day-layout">
+        <div className="day-icon-wrap">
+          <span className="day-icon">{d.icon}</span>
         </div>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between mb-1">
-            <span className="m3-title-small" style={{ color: "var(--m3-on-surface)" }}>
-              Day {d.day}
-            </span>
-            <span className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
-              {d.date}
-            </span>
+        <div className="day-body">
+          <div className="day-top">
+            <span className="day-label">Day {d.day}</span>
+            <span className="day-date">{d.date}</span>
           </div>
-          <p className="m3-body-medium" style={{ color: "var(--m3-primary)" }}>
-            {d.move}
-          </p>
-          {d.content && (
-            <p className="m3-body-small mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
-              {d.content}
-            </p>
-          )}
-          <div
-            className="m3-chip mt-2"
-            style={{
-              backgroundColor: isEnd ? "var(--m3-tertiary-container)" : "var(--m3-surface-container-high)",
-              color: isEnd ? "var(--m3-on-tertiary-container)" : "var(--m3-on-surface-variant)",
-              border: isEnd ? "1px solid var(--m3-tertiary)" : undefined,
-            }}
-          >
-            {d.stay}
-          </div>
+          <p className="day-move">{d.move}</p>
+          {d.content && <p className="day-note">{d.content}</p>}
+          <span className={`day-stay ${isEnd ? "stay-end" : ""}`}>{d.stay}</span>
         </div>
       </div>
     </div>
@@ -129,20 +85,16 @@ function DayCard({ d }: { d: TripData["days"][0] }) {
 /* ─── Hotel Card ─── */
 function HotelCard({ h }: { h: TripData["hotels"][0] }) {
   return (
-    <div className="m3-card p-4 m3-fade-in">
-      <div className="flex items-start gap-3 mb-3">
-        <span style={{ fontSize: 22 }}>🏨</span>
+    <div className="m3-card p-4">
+      <div className="hotel-top">
+        <span className="hotel-icon">🏨</span>
         <div>
-          <h3 className="m3-title-small" style={{ color: "var(--m3-on-surface)" }}>
-            {h.name}
-          </h3>
-          <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
-            {h.nights}
-          </p>
+          <h3 className="hotel-name">{h.name}</h3>
+          <p className="hotel-nights">{h.nights}</p>
         </div>
       </div>
-      <hr className="m3-divider" />
-      <div className="grid grid-cols-2 gap-x-3 gap-y-2 mt-3">
+      <div className="m3-divider" />
+      <div className="hotel-grid">
         {[
           ["住所", h.address],
           ["電話", h.phone],
@@ -150,40 +102,15 @@ function HotelCard({ h }: { h: TripData["hotels"][0] }) {
           ["CI/CO", `${h.checkin} / ${h.checkout}`],
           ["支払", h.payment],
         ].map(([label, value], i) => (
-          <div key={i} className="contents">
-            <span className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
-              {label}
-            </span>
-            <span className="m3-body-medium" style={{ color: "var(--m3-on-surface)" }}>
-              {value}
-            </span>
+          <div key={i} className="hotel-row">
+            <span className="hotel-label">{label}</span>
+            <span className="hotel-value">{value}</span>
           </div>
         ))}
       </div>
-      <a
-        href={h.mapLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="m3-body-medium mt-2"
-        style={{ color: "var(--m3-primary)", display: "inline-flex", alignItems: "center", gap: 4, textDecoration: "underline" }}
-      >
-        🗺️ Google Mapsで見る
-      </a>
-      {h.notes && (
-        <p className="m3-body-medium mt-3" style={{ color: "var(--m3-on-surface-variant)" }}>
-          {h.notes}
-        </p>
-      )}
-      <div
-        className="m3-chip mt-2"
-        style={{
-          backgroundColor: "var(--m3-primary-container)",
-          color: "var(--m3-on-primary-container)",
-          border: "none",
-        }}
-      >
-        {h.bookingRef}
-      </div>
+      <MapLink href={h.mapLink} />
+      {h.notes && <p className="hotel-notes">{h.notes}</p>}
+      <span className="hotel-ref">{h.bookingRef}</span>
     </div>
   );
 }
@@ -191,11 +118,9 @@ function HotelCard({ h }: { h: TripData["hotels"][0] }) {
 /* ─── Section ─── */
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section>
-      <h2 className="m3-title-small mb-3" style={{ color: "var(--m3-on-surface-variant)" }}>
-        {title}
-      </h2>
-      <div className="space-y-3">{children}</div>
+    <section className="section-group">
+      <h2 className="section-title">{title}</h2>
+      <div className="section-body">{children}</div>
     </section>
   );
 }
@@ -206,347 +131,193 @@ export default function TripContent({ data }: { data: TripData }) {
   const progressPct = Math.round((doneCount / data.todo.length) * 100);
 
   return (
-    <div style={{ backgroundColor: "var(--m3-background)", minHeight: "100vh", paddingBottom: 32 }}>
+    <div className="app-root">
       {/* Top App Bar */}
-      <header
-        className="sticky top-0 z-10"
-        style={{
-          backgroundColor: "var(--m3-surface-container-low)",
-          borderBottom: "1px solid var(--m3-outline-variant)",
-          backdropFilter: "blur(12px)",
-        }}
-      >
-        <div className="px-4 py-3" style={{ maxWidth: 720, margin: "0 auto" }}>
-          <div className="flex items-center gap-3">
-            <div
-              className="flex items-center justify-center flex-shrink-0"
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 14,
-                backgroundColor: "var(--m3-primary-container)",
-              }}
-            >
-              <span style={{ fontSize: 20 }}>🗺️</span>
-            </div>
+      <header className="app-bar">
+        <div className="app-bar-inner">
+          <div className="app-bar-content">
+            <div className="app-bar-icon">🗺️</div>
             <div>
-              <h1 className="m3-title-medium" style={{ color: "var(--m3-on-surface)" }}>
-                {data.title}
-              </h1>
-              <p className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
-                {data.subtitle}
-              </p>
+              <h1 className="app-bar-title">{data.title}</h1>
+              <p className="app-bar-sub">{data.subtitle}</p>
             </div>
           </div>
         </div>
       </header>
 
       {/* Content */}
-      <div className="px-4" style={{ maxWidth: 720, margin: "0 auto", paddingTop: 16 }}>
-        <div className="space-y-5">
-          {/* フライト */}
-          <Section title="✈️ フライト">
-            <div
-              className="m3-card p-4"
-              style={{
-                backgroundColor: "var(--m3-primary-container)",
-                border: "1px solid var(--m3-primary)",
-              }}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="m3-label-large" style={{ color: "var(--m3-on-primary-container)" }}>
-                    予約番号 {data.bookingRef}
-                  </p>
-                  <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-primary-container)", opacity: 0.7 }}>
-                    {data.passengers}
-                  </p>
-                </div>
-                <div className="text-right">
-                  <p className="m3-body-large" style={{ color: "var(--m3-on-primary-container)" }}>
-                    {data.milesCost}
-                  </p>
-                  <p className="m3-body-medium" style={{ color: "var(--m3-on-primary-container)", opacity: 0.7 }}>
-                    残 {data.remainingMiles}
-                  </p>
-                </div>
-              </div>
+      <main className="main-content">
+        {/* フライト */}
+        <Section title="✈️ フライト">
+          <div className="booking-card">
+            <div className="booking-left">
+              <p className="booking-ref">予約番号 {data.bookingRef}</p>
+              <p className="booking-passengers">{data.passengers}</p>
             </div>
-
-            {/* 行き */}
-            <div className="flex items-center gap-2 ml-1">
-              <span style={{ fontSize: 18 }}>⬆️</span>
-              <h3 className="m3-title-small" style={{ color: "var(--m3-on-surface-variant)" }}>行き</h3>
+            <div className="booking-right">
+              <p className="booking-cost">{data.milesCost}</p>
+              <p className="booking-remaining">残 {data.remainingMiles}</p>
             </div>
-            <div className="space-y-3">
-              {data.flights.filter(f => f.leg.startsWith("行き")).map((f, i) => <FlightCard key={i} f={f} />)}
-            </div>
+          </div>
 
-            {/* 帰り */}
-            <div className="flex items-center gap-2 ml-1 mt-4">
-              <span style={{ fontSize: 18 }}>⬇️</span>
-              <h3 className="m3-title-small" style={{ color: "var(--m3-on-surface-variant)" }}>帰り</h3>
-            </div>
-            <div className="space-y-3">
-              {data.flights.filter(f => f.leg.startsWith("帰り")).map((f, i) => <FlightCard key={i} f={f} />)}
-            </div>
-          </Section>
+          <div className="flight-group-label"><span>⬆️</span> 行き</div>
+          <div className="card-stack">
+            {data.flights.filter(f => f.leg.startsWith("行き")).map((f, i) => <FlightCard key={i} f={f} />)}
+          </div>
 
-          {/* 日程 */}
-          <Section title="📅 日程">
-            {data.days.map((d, i) => <DayCard key={i} d={d} />)}
-          </Section>
+          <div className="flight-group-label"><span>⬇️</span> 帰り</div>
+          <div className="card-stack">
+            {data.flights.filter(f => f.leg.startsWith("帰り")).map((f, i) => <FlightCard key={i} f={f} />)}
+          </div>
+        </Section>
 
-          {/* 宿泊 */}
-          <Section title="🏨 宿泊">
-            {data.hotels.map((h, i) => <HotelCard key={i} h={h} />)}
-            <div
-              className="m3-chip"
-              style={{
-                backgroundColor: "var(--m3-surface-container-high)",
-                color: "var(--m3-on-surface-variant)",
-              }}
-            >
-              IHG消費: {data.ihgTotal} / 残 {data.ihgRemaining}
-            </div>
-          </Section>
+        {/* 日程 */}
+        <Section title="📅 日程">
+          {data.days.map((d, i) => <DayCard key={i} d={d} />)}
+        </Section>
 
-          {/* レンタカー */}
-          <Section title="🚗 レンタカー">
-            <div className="m3-card p-4 m3-fade-in">
-              <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                {[
-                  ["会社", data.rentalCar.company],
-                  ["予約", data.rentalCar.ref],
-                  ["車種", data.rentalCar.car],
-                  ["受取", data.rentalCar.pickup],
-                  ["返却", data.rentalCar.returnLoc],
-                  ["追加Driver", data.rentalCar.extraDriver],
-                  ["DW", data.rentalCar.dw],
-                  ["距離", data.rentalCar.mileage],
-                  ["合計", data.rentalCar.total],
-                ].map(([label, value], i) => (
-                  <div key={i} className="contents">
-                    <span className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
-                      {label}
-                    </span>
-                    <span
-                      className="m3-body-medium"
-                      style={{
-                        color: label === "予約" ? "var(--m3-primary)" : "var(--m3-on-surface)",
-                        fontWeight: label === "合計" ? 600 : 400,
-                      }}
-                    >
-                      {value}
-                    </span>
-                  </div>
-                ))}
-              </div>
+        {/* 宿泊 */}
+        <Section title="🏨 宿泊">
+          {data.hotels.map((h, i) => <HotelCard key={i} h={h} />)}
+          <div className="ihg-chip">IHG消費: {data.ihgTotal} / 残 {data.ihgRemaining}</div>
+        </Section>
 
-              {/* Pickup Location */}
-              <hr className="m3-divider" />
-              <div className="mt-3">
-                <p className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
-                  📍 Pickup
-                </p>
-                <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface)" }}>
-                  {data.rentalCar.pickupAddress}
-                </p>
-                <a
-                  href={data.rentalCar.pickupMap}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="m3-body-medium mt-1"
-                  style={{ color: "var(--m3-primary)", display: "inline-flex", alignItems: "center", gap: 4, textDecoration: "underline" }}
-                >
-                  🗺️ Google Mapsで見る
-                </a>
-              </div>
-
-              {/* Return Location */}
-              <div className="mt-3">
-                <p className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
-                  📍 Drop-off
-                </p>
-                <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface)" }}>
-                  {data.rentalCar.returnAddress}
-                </p>
-                <a
-                  href={data.rentalCar.returnMap}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="m3-body-medium mt-1"
-                  style={{ color: "var(--m3-primary)", display: "inline-flex", alignItems: "center", gap: 4, textDecoration: "underline" }}
-                >
-                  🗺️ Google Mapsで見る
-                </a>
-              </div>
-
-              <hr className="m3-divider" />
-              <p className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
-                📞 {data.rentalCar.phone}（{data.rentalCar.hours}）
-              </p>
-            </div>
-          </Section>
-
-          {/* ディナー */}
-          {data.dinners.length > 0 && (
-            <Section title="🍽️ ディナー予約">
-              {data.dinners.map((d, i) => (
-                <div key={i} className="m3-card p-4 m3-fade-in">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="m3-title-small" style={{ color: "var(--m3-on-surface)" }}>
-                      {d.venue}
-                    </span>
-                    <span className="m3-label-large" style={{ color: "var(--m3-secondary)" }}>
-                      {d.time}
-                    </span>
-                  </div>
-                  <p className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
-                    {d.date} {d.notes}
-                  </p>
-                  <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface)" }}>
-                    📍 {d.address}
-                  </p>
-                  <a
-                    href={d.mapLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="m3-body-medium mt-1"
-                    style={{ color: "var(--m3-primary)", display: "inline-flex", alignItems: "center", gap: 4, textDecoration: "underline" }}
-                  >
-                    🗺️ Google Mapsで見る
-                  </a>
+        {/* レンタカー */}
+        <Section title="🚗 レンタカー">
+          <div className="m3-card p-4">
+            <div className="rental-grid">
+              {[
+                ["会社", data.rentalCar.company],
+                ["予約", data.rentalCar.ref],
+                ["車種", data.rentalCar.car],
+                ["受取", data.rentalCar.pickup],
+                ["返却", data.rentalCar.returnLoc],
+                ["追加Driver", data.rentalCar.extraDriver],
+                ["DW", data.rentalCar.dw],
+                ["距離", data.rentalCar.mileage],
+                ["合計", data.rentalCar.total],
+              ].map(([label, value], i) => (
+                <div key={i} className="rental-row">
+                  <span className="rental-label">{label}</span>
+                  <span className={`rental-value ${label === "予約" ? "rental-highlight" : ""} ${label === "合計" ? "rental-bold" : ""}`}>{value}</span>
                 </div>
               ))}
-            </Section>
-          )}
-
-          {/* 旅行保険 */}
-          <Section title="🛡️ 旅行保険">
-            <div className="m3-card p-4 m3-fade-in">
-              <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                {[
-                  ["会社", data.insurance.provider],
-                  ["プラン", data.insurance.plan],
-                  ["証明書", data.insurance.certNumber],
-                  ["期間", data.insurance.period],
-                  ["加入者", data.insurance.travelers],
-                  ["医療限度額", data.insurance.medicalMax],
-                  ["免責", data.insurance.deductible],
-                  ["緊急搬送", data.insurance.evacuation],
-                  ["緊急連絡", data.insurance.emergencyPhone],
-                ].map(([label, value], i) => (
-                  <div key={i} className="contents">
-                    <span className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
-                      {label}
-                    </span>
-                    <span
-                      className="m3-body-small"
-                      style={{
-                        color: label === "緊急連絡" ? "var(--m3-primary)" : "var(--m3-on-surface)",
-                        fontWeight: label === "医療限度額" || label === "緊急搬送" ? 600 : 400,
-                      }}
-                    >
-                      {value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              {data.insurance.notes && (
-                <hr className="m3-divider" />
-              )}
-              {data.insurance.notes && (
-                <p className="m3-body-small mt-1" style={{ color: "var(--m3-on-surface-variant)" }}>
-                  {data.insurance.notes}
-                </p>
-              )}
             </div>
-          </Section>
-
-          {/* TODO */}
-          <Section title="✅ 準備リスト">
-            <div className="m3-card p-4">
-              <div className="m3-linear-progress mb-3">
-                <div className="m3-linear-progress-fill" style={{ width: `${progressPct}%` }} />
-              </div>
-              <p className="m3-body-small text-center mb-4" style={{ color: "var(--m3-on-surface-variant)" }}>
-                {doneCount}/{data.todo.length} 完了
-              </p>
-              <div className="space-y-2">
-                {data.todo.map((t, i) => (
-                  <div key={i} className="flex items-center gap-3 py-1">
-                    <div
-                      style={{
-                        width: 22,
-                        height: 22,
-                        borderRadius: 4,
-                        border: `2px solid ${t.done ? "var(--m3-primary)" : "var(--m3-outline)"}`,
-                        backgroundColor: t.done ? "var(--m3-primary)" : "transparent",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexShrink: 0,
-                      }}
-                    >
-                      {t.done && (
-                        <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
-                          <path d="M2 6L5 9L10 3" stroke="var(--m3-on-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      )}
-                    </div>
-                    <span
-                      className="m3-body-medium"
-                      style={{
-                        color: t.done ? "var(--m3-on-surface-variant)" : "var(--m3-on-surface)",
-                        textDecoration: t.done ? "line-through" : "none",
-                      }}
-                    >
-                      {t.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            <div className="m3-divider" />
+            <div className="rental-location">
+              <p className="location-label">📍 Pickup</p>
+              <p className="location-addr">{data.rentalCar.pickupAddress}</p>
+              <MapLink href={data.rentalCar.pickupMap} />
             </div>
-          </Section>
-
-          {/* メモ */}
-          <Section title="📝 メモ">
-            <div className="m3-card p-4">
-              <ul className="space-y-2">
-                {data.notes.map((n, i) => {
-                  const dropboxUrl = "https://www.dropbox.com/scl/fo/e5a0ervr6jl8qqyvz1107/AFRfKxaKIwp8vDBC93d90rk?rlkey=rcclaybjui7e1b2y88o3pni1w&dl=0";
-                  const isDropbox = n.startsWith("📎 ");
-                  return (
-                    <li key={i} className="m3-body-medium flex gap-2" style={{ color: "var(--m3-on-surface-variant)" }}>
-                      <span style={{ color: "var(--m3-primary)", flexShrink: 0 }}>•</span>
-                      {isDropbox ? (
-                        <a
-                          href={dropboxUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ color: "var(--m3-primary)", textDecoration: "underline" }}
-                        >
-                          {n}
-                        </a>
-                      ) : (
-                        <span>{n}</span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+            <div className="rental-location">
+              <p className="location-label">📍 Drop-off</p>
+              <p className="location-addr">{data.rentalCar.returnAddress}</p>
+              <MapLink href={data.rentalCar.returnMap} />
             </div>
-          </Section>
-
-          {/* Footer */}
-          <div className="text-center py-6">
-            <p className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
-              Made with ❤️ by DriMac
-            </p>
+            <div className="m3-divider" />
+            <p className="rental-phone">📞 {data.rentalCar.phone}（{data.rentalCar.hours}）</p>
           </div>
-        </div>
-      </div>
+        </Section>
+
+        {/* ディナー */}
+        {data.dinners.length > 0 && (
+          <Section title="🍽️ ディナー予約">
+            {data.dinners.map((d, i) => (
+              <div key={i} className="m3-card p-4">
+                <div className="dinner-top">
+                  <span className="dinner-venue">{d.venue}</span>
+                  <span className="dinner-time">{d.time}</span>
+                </div>
+                <p className="dinner-meta">{d.date} {d.notes}</p>
+                <p className="dinner-addr">📍 {d.address}</p>
+                <MapLink href={d.mapLink} />
+              </div>
+            ))}
+          </Section>
+        )}
+
+        {/* 旅行保険 */}
+        <Section title="🛡️ 旅行保険">
+          <div className="m3-card p-4">
+            <div className="insurance-grid">
+              {[
+                ["会社", data.insurance.provider],
+                ["プラン", data.insurance.plan],
+                ["証明書", data.insurance.certNumber],
+                ["期間", data.insurance.period],
+                ["加入者", data.insurance.travelers],
+                ["医療限度額", data.insurance.medicalMax],
+                ["免責", data.insurance.deductible],
+                ["緊急搬送", data.insurance.evacuation],
+                ["緊急連絡", data.insurance.emergencyPhone],
+              ].map(([label, value], i) => (
+                <div key={i} className="insurance-row">
+                  <span className="insurance-label">{label}</span>
+                  <span className={`insurance-value ${label === "緊急連絡" ? "insurance-emergency" : ""} ${label === "医療限度額" || label === "緊急搬送" ? "insurance-bold" : ""}`}>{value}</span>
+                </div>
+              ))}
+            </div>
+            {data.insurance.notes && (
+              <>
+                <div className="m3-divider" />
+                <p className="insurance-note">{data.insurance.notes}</p>
+              </>
+            )}
+          </div>
+        </Section>
+
+        {/* TODO */}
+        <Section title="✅ 準備リスト">
+          <div className="m3-card p-4">
+            <div className="progress-wrap">
+              <div className="progress-bar">
+                <div className="progress-fill" style={{ width: `${progressPct}%` }} />
+              </div>
+              <p className="progress-text">{doneCount}/{data.todo.length} 完了</p>
+            </div>
+            <div className="todo-list">
+              {data.todo.map((t, i) => (
+                <div key={i} className="todo-item">
+                  <div className={`todo-checkbox ${t.done ? "checked" : ""}`}>
+                    {t.done && (
+                      <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6L5 9L10 3" stroke="var(--m3-on-primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                  </div>
+                  <span className={`todo-label ${t.done ? "done" : ""}`}>{t.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* メモ */}
+        <Section title="📝 メモ">
+          <div className="m3-card p-4">
+            <ul className="notes-list">
+              {data.notes.map((n, i) => {
+                const dropboxUrl = "https://www.dropbox.com/scl/fo/e5a0ervr6jl8qqyvz1107/AFRfKxaKIwp8vDBC93d90rk?rlkey=rcclaybjui7e1b2y88o3pni1w&dl=0";
+                const isDropbox = n.startsWith("📎 ");
+                return (
+                  <li key={i} className="note-item">
+                    {isDropbox ? (
+                      <a href={dropboxUrl} target="_blank" rel="noopener noreferrer" className="note-link">{n}</a>
+                    ) : (
+                      <span>{n}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </Section>
+
+        {/* Footer */}
+        <footer className="app-footer">
+          <p>Made with ❤️ by DriMac</p>
+        </footer>
+      </main>
     </div>
   );
 }
