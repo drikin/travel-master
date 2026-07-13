@@ -41,7 +41,11 @@ export interface RentalCar {
   ref: string;
   car: string;
   pickup: string;
+  pickupAddress: string;
+  pickupMap: string;
   returnLoc: string;
+  returnAddress: string;
+  returnMap: string;
   extraDriver: string;
   dw: string;
   mileage: string;

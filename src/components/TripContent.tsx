@@ -318,11 +318,11 @@ export default function TripContent({ data }: { data: TripData }) {
                   ["合計", data.rentalCar.total],
                 ].map(([label, value], i) => (
                   <div key={i} className="contents">
-                    <span className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
+                    <span className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
                       {label}
                     </span>
                     <span
-                      className="m3-body-small"
+                      className="m3-body-medium"
                       style={{
                         color: label === "予約" ? "var(--m3-primary)" : "var(--m3-on-surface)",
                         fontWeight: label === "合計" ? 600 : 400,
@@ -333,8 +333,48 @@ export default function TripContent({ data }: { data: TripData }) {
                   </div>
                 ))}
               </div>
+
+              {/* Pickup Location */}
               <hr className="m3-divider" />
-              <p className="m3-body-small" style={{ color: "var(--m3-on-surface-variant)" }}>
+              <div className="mt-3">
+                <p className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
+                  📍 Pickup
+                </p>
+                <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface)" }}>
+                  {data.rentalCar.pickupAddress}
+                </p>
+                <a
+                  href={data.rentalCar.pickupMap}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="m3-body-medium mt-1"
+                  style={{ color: "var(--m3-primary)", display: "inline-flex", alignItems: "center", gap: 4, textDecoration: "underline" }}
+                >
+                  🗺️ Google Mapsで見る
+                </a>
+              </div>
+
+              {/* Return Location */}
+              <div className="mt-3">
+                <p className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
+                  📍 Drop-off
+                </p>
+                <p className="m3-body-medium mt-1" style={{ color: "var(--m3-on-surface)" }}>
+                  {data.rentalCar.returnAddress}
+                </p>
+                <a
+                  href={data.rentalCar.returnMap}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="m3-body-medium mt-1"
+                  style={{ color: "var(--m3-primary)", display: "inline-flex", alignItems: "center", gap: 4, textDecoration: "underline" }}
+                >
+                  🗺️ Google Mapsで見る
+                </a>
+              </div>
+
+              <hr className="m3-divider" />
+              <p className="m3-body-medium" style={{ color: "var(--m3-on-surface-variant)" }}>
                 📞 {data.rentalCar.phone}（{data.rentalCar.hours}）
               </p>
             </div>
